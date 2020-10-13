@@ -17,7 +17,7 @@ var testData = QueueTest{
 	{Queue{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 13},
 }
 
-const itemLimit = 1000
+const itemLimit = 10000
 
 func TestQueue_IsEmpty(t *testing.T) {
 	queue := Queue{1, 2}
