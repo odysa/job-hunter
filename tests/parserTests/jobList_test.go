@@ -1,4 +1,4 @@
-package tests
+package parserTests
 
 import (
 	"job-hunter/fetch"

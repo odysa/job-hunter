@@ -1,4 +1,4 @@
-package tests
+package libsTests
 
 import (
 	"job-hunter/libs"
