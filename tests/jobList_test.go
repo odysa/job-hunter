@@ -1,7 +1,8 @@
-package parser
+package tests
 
 import (
 	"job-hunter/fetch"
+	"job-hunter/parser/shixiseng"
 	"testing"
 )
 
@@ -11,7 +12,7 @@ func TestParseJobList(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	result := ParseJobList(resp, "")
+	result := parser.ParseJobList(resp, "")
 	if len(result.Requests) != urlLen {
 		t.Errorf("parseJobListError, length should be 20, but got %d", len(result.Requests))
 	}
