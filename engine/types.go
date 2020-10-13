@@ -17,3 +17,7 @@ type ParseResult struct {
 	Requests []Request
 }
 type ParseFunc func(contents []byte, url string) ParseResult
+
+func NilParser(contents []byte, url string) ParseResult {
+	return ParseResult{}
+}

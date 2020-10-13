@@ -13,9 +13,14 @@ type Scheduler interface {
 
 func (e Engine) Run(requests ...Request) {
 	out := make(chan ParseResult)
+	e.Scheduler.Run()
 
 	for i := 0; i < e.WorkerLimit; i++ {
 		createWorker(e.Scheduler, out)
+	}
+
+	for _, r := range requests {
+		e.Scheduler.SubmitRequest(r)
 	}
 
 }
