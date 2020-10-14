@@ -15,13 +15,16 @@ func ParseJob(doc *goquery.Document, url string) engine.ParseResult {
 	id := libs.ExtractString([]byte(url), idRe)
 
 	name := doc.Find("div.new_job_name>span").First().Text()
-	location := doc.Find("span.com_position").First().Text()
+	location := doc.Find("span.job_position").First().Text()
 	education := doc.Find("span.job_academic").First().Text()
 	salary := doc.Find("span.job_money").First().Text()
 	low, high := libs.ParseSalary(salary, ConvertNumber)
 	description := doc.Find("div.job_detail").First().Find("span,p").Text()
 	// replace \n
 	description = strings.Replace(description, "\n", "", -1)
+
+	comName := doc.Find("a.com-name").First().Text()
+	comDesc := doc.Find(".com-desc").First().Text()
 
 	item := engine.Item{
 		Url: url,
@@ -33,6 +36,10 @@ func ParseJob(doc *goquery.Document, url string) engine.ParseResult {
 			Description: description,
 			SalaryLow:   low,
 			SalaryHigh:  high,
+			Company: model.Company{
+				Name:        comName,
+				Description: comDesc,
+			},
 		},
 	}
 
@@ -41,16 +48,5 @@ func ParseJob(doc *goquery.Document, url string) engine.ParseResult {
 		Requests: []engine.Request{},
 	}
 
-	comUel, ok := doc.Find("a.com-name").First().Attr("href")
-	if ok {
-		result.Requests = append(result.Requests, engine.Request{
-			Url:       comUel,
-			ParseFunc: engine.NilParser,
-		})
-	}
 	return result
-}
-
-func getParseJob(id string) engine.ParseFunc {
-	return ParseJob
 }

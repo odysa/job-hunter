@@ -22,13 +22,4 @@ func main() {
 		Url:       "https://www.shixiseng.com/interns?type=intern&city=%E5%85%A8%E5%9B%BD",
 		ParseFunc: parser.ParseJobList,
 	})
-	//res, err := http.Get("https://www.shixiseng.com/intern/inn_n7xuu1c0hizv?pcm=pc_SearchList")
-	//if err != nil {
-	//	panic(err)
-	//}
-	//data := parser.ParseJob(res.Body, "")
-	//fmt.Printf("%v",data.Items[0])
-	//low, high := libs.ParseSalary("\uEB5B\uF0E5-\uE0D8\uF0E5\uF0E5/天", shixiseng.ConvertNumber)
-	//fmt.Println(low, high)
-
 }

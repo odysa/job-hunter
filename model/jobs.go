@@ -3,8 +3,6 @@ package model
 type Company struct {
 	Name        string
 	Description string
-	Location    string
-	Field       string
 }
 
 type Job struct {
