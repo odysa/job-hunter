@@ -18,6 +18,10 @@ func (s *Scheduler) SubmitWorker(worker chan engine.Request) {
 	s.WorkerChan <- worker
 }
 
+func (s *Scheduler) MakeWorkerChan() chan engine.Request {
+	return make(chan engine.Request)
+}
+
 func (s *Scheduler) Run() {
 	s.RequestChan = make(chan engine.Request)
 	s.WorkerChan = make(chan chan engine.Request)

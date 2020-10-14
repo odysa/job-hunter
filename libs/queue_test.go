@@ -1,33 +1,32 @@
-package libsTests
+package libs
 
 import (
-	"job-hunter/libs"
 	"testing"
 )
 
 type QueueTest []struct {
-	queue libs.Queue
+	queue Queue
 	ans   int
 }
 
 var testData = QueueTest{
-	{libs.Queue{}, 0},
-	{libs.Queue{1}, 1},
-	{libs.Queue{1, 2}, 2},
-	{libs.Queue{1, 2, 3}, 3},
-	{libs.Queue{1, 2, 3, 4}, 4},
-	{libs.Queue{1, 2, 3, 4, 5}, 5},
-	{libs.Queue{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 13},
+	{Queue{}, 0},
+	{Queue{1}, 1},
+	{Queue{1, 2}, 2},
+	{Queue{1, 2, 3}, 3},
+	{Queue{1, 2, 3, 4}, 4},
+	{Queue{1, 2, 3, 4, 5}, 5},
+	{Queue{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 13},
 }
 
 const itemLimit = 10000
 
 func TestQueue_IsEmpty(t *testing.T) {
-	queue := libs.Queue{1, 2}
+	queue := Queue{1, 2}
 	if queue.IsEmpty() {
 		t.Errorf("queue should not be empty")
 	}
-	queue = libs.Queue{}
+	queue = Queue{}
 	if !queue.IsEmpty() {
 		t.Errorf("queue should be empty")
 	}
@@ -38,7 +37,7 @@ func TestQueue_Length(t *testing.T) {
 			t.Errorf("length error, queue length should be %d, but got %d", test.queue.Length(), test.ans)
 		}
 	}
-	queue := libs.Queue{}
+	queue := Queue{}
 	for i := 0; i < itemLimit; i++ {
 		queue.Push(i)
 		if queue.Length() != i+1 {
@@ -58,7 +57,7 @@ func TestQueue_Pop(t *testing.T) {
 	}
 }
 func TestQueue_Push(t *testing.T) {
-	queue := libs.Queue{}
+	queue := Queue{}
 	for i := 0; i < itemLimit; i++ {
 		queue.Push(i)
 		if queue[queue.Length()-1] != i {
@@ -67,7 +66,7 @@ func TestQueue_Push(t *testing.T) {
 	}
 }
 func TestQueue_Top(t *testing.T) {
-	queue := libs.Queue{}
+	queue := Queue{}
 	for i := 0; i < itemLimit; i++ {
 		queue.Push(i)
 		if queue.Top() != i {

@@ -15,5 +15,6 @@ type Job struct {
 	Education   string
 	SalaryLow   int
 	SalaryHigh  int
+	Location    string
 	Company     Company
 }
