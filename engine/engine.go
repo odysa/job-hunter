@@ -18,19 +18,23 @@ type Scheduler interface {
 	Run()
 }
 
-func (e Engine) Run(request Request) {
+func (e Engine) Run(seed Request, isPageInc bool) {
 	out := make(chan ParseResult)
 	var requests []Request
 
-	requestGenerator := GenerateUrlPage(request)
 	e.Scheduler.Run()
 
 	for i := 0; i < e.WorkerLimit; i++ {
 		createWorker(e.Scheduler, e.Scheduler.MakeWorkerChan(), out)
 	}
 	// generate request by page
-	for i := 0; i < e.PageLimit; i++ {
-		requests = append(requests, requestGenerator())
+	if isPageInc {
+		requestGenerator := GenerateUrlPage(seed)
+		for i := 0; i < e.PageLimit; i++ {
+			requests = append(requests, requestGenerator())
+		}
+	} else {
+		requests = append(requests, seed)
 	}
 
 	for _, r := range requests {

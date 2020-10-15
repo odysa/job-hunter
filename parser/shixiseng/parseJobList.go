@@ -7,6 +7,7 @@ import (
 
 func ParseJobList(doc *goquery.Document, url string) engine.ParseResult {
 	result := engine.ParseResult{}
+	// fetch each url
 	doc.Find("[href*='intern']").Each(func(i int, s *goquery.Selection) {
 		url, ok := s.Attr("href")
 		if ok {

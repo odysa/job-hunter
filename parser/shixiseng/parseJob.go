@@ -18,7 +18,7 @@ func ParseJob(doc *goquery.Document, url string) engine.ParseResult {
 	location := doc.Find("span.job_position").First().Text()
 	education := doc.Find("span.job_academic").First().Text()
 	salary := doc.Find("span.job_money").First().Text()
-	low, high := libs.ParseSalary(salary, ConvertNumber)
+	low, high := libs.ParseSalary(salary, NumberMapper)
 	description := doc.Find("div.job_detail").First().Find("span,p").Text()
 	// replace \n
 	description = strings.Replace(description, "\n", "", -1)

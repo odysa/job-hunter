@@ -2,7 +2,7 @@ package shixiseng
 
 import "strings"
 
-func ConvertNumber(code string) int {
+func NumberMapper(code string) int {
 	numberMap := map[string]int{
 		"f0e5": 0,
 		"e0d8": 1,
