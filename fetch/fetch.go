@@ -3,11 +3,12 @@ package fetch
 import (
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
+	"log"
 	"net/http"
 	"time"
 )
 
-var rateLimiter = time.Tick(300 * time.Microsecond)
+var rateLimiter = time.Tick(1000 * time.Microsecond)
 
 func Fetch(url string) (*goquery.Document, error) {
 	<-rateLimiter
@@ -16,6 +17,8 @@ func Fetch(url string) (*goquery.Document, error) {
 		return nil, err
 	}
 	defer res.Body.Close()
+
+	log.Printf("fectch %s", url)
 
 	if res.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("error, status code:%d", res.StatusCode)

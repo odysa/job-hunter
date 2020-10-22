@@ -6,9 +6,10 @@ import (
 
 // Item of result
 type Item struct {
-	Id   string
-	Url  string
-	Data interface{}
+	Id     string
+	Url    string
+	Source string
+	Data   interface{}
 }
 
 type Request struct {

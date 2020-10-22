@@ -6,7 +6,7 @@ import (
 )
 
 func TestParseJob(t *testing.T) {
-	resp, err := fetch.Fetch("https://www.shixiseng.com/intern/inn_onwoc69o51rg?pcm=pc_SearchList")
+	resp, err := fetch.Fetch("https://www.shixiseng.com/intern/inn_onwoc69o51rg?pcm=pc_SearchList", "https://www.shixiseng.com")
 	if err != nil {
 		panic(err)
 	}

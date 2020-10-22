@@ -27,8 +27,9 @@ func ParseJob(doc *goquery.Document, url string) engine.ParseResult {
 	comDesc := doc.Find(".com-desc").First().Text()
 
 	item := engine.Item{
-		Url: url,
-		Id:  id,
+		Url:    url,
+		Id:     id,
+		Source: "shixiseng",
 		Data: model.Job{
 			Name:        name,
 			Location:    location,
