@@ -7,16 +7,16 @@ func TestNumberMapper(t *testing.T) {
 		data   string
 		answer int
 	}{
-		{"f0e5", 0},
-		{"e0d8", 1},
-		{"e5d1", 2},
-		{"f313", 3},
-		{"e609", 4},
-		{"eb5b", 5},
-		{"f2e1", 6},
-		{"eb83", 7},
-		{"f4c4", 8},
-		{"eb46", 9},
+		{"e535", 0},
+		{"f693", 1},
+		{"e5e7", 2},
+		{"f19e", 3},
+		{"f31b", 4},
+		{"ebae", 5},
+		{"f307", 6},
+		{"e689", 7},
+		{"e221", 8},
+		{"f661", 9},
 	}
 	for _, test := range testData {
 		data := NumberMapper(test.data)
